@@ -1,92 +1,24 @@
-## Rails tutorial
-[railsチュートリアル](https://railstutorial.jp/chapters/beginning?version=5.0)
+# README
 
-### clone
-任意のディレクトリで実行
-```
-git clone https://github.com/TakahiroTsuchiya-SO/docker_rails_seed.git
-```
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-### railsの作成
-#### - アプリケーションの作成
-```
-$ docker-compose run web rails new . --force --database=postgresql
-```
+Things you may want to cover:
 
-#### - databeseとの接続
-config/database.ymlの17行目をまるまる以下に書き換える
-```
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  host: db           # 追記
-  username: postgres # 追記
-  password: password # 追記
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-```
+* Ruby version
 
-### docker環境を構築
-#### - コンテナをビルド
-```
-docker-compose build
-```
+* System dependencies
 
-#### - データベース作成
-```
-$ docker-compose run web rails db:create
-```
+* Configuration
 
-#### - コンテナ立ち上げ
-```
-docker-compose up
-```
+* Database creation
 
-### git 関連
-#### - git初期化
-```
-git init
-```
+* Database initialization
 
-#### - git remote再設定
-```
-git remote set-url origin {new url}
-```
+* How to run the test suite
 
-### herokuデプロイ
-#### - コンテナ落とす
-```
-$ docker-compose down
-$ rm tmp/pids/server.pid
-```
+* Services (job queues, cache servers, search engines, etc.)
 
-#### - herokuログイン
-アカウントない場合は作成する
-```
-heroku login
-```
+* Deployment instructions
 
-#### - herokuアプリケーションの作成
-```
-$ heroku create
-```
-
-#### - Container Registryにアップロード
-```
-$ heroku container:login
-$ heroku container:push web
-```
-
-#### - add-onの追加
-```
-$ heroku addons:create heroku-postgresql:hobby-dev
-```
-
-#### - リリース
-```
-$ heroku container:release web
-```
-
-#### - 確認
-```
-$ heroku open
-```
+* ...
